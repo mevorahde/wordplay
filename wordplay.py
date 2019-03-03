@@ -14,5 +14,21 @@ def score_word(word:str):
     return score
 
 
-score_word("word")
+# print(score_word("word"))
+
+def lexicon_file(filename: str)->list:
+    input_file = open(filename, "r")
+    read_lines = input_file.readlines()
+    word_list = []
+    for line in read_lines:
+        if not line.strip() or not line.startswith("#"):
+            lower_word = line.lower()
+            word_list.append(lower_word.strip())
+    # print(word_list)
+    # print(len(word_list))
+    return word_list
+    input_file.close()
+
+
+lexicon_file("sowpods.txt")
 

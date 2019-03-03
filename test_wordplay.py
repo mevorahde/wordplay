@@ -1,5 +1,5 @@
 import pytest
-from wordplay import score_word
+from wordplay import score_word, lexicon_file
 
 
 @pytest.mark.parametrize("word, score", [

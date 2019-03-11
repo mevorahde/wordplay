@@ -7,7 +7,7 @@ scrabble_point_values = {"a": 1, "c": 3, "b": 3, "e": 1, "d": 2, "g": 2,
           "x": 8, "z": 10}
 
 
-def score_word(word:str):
+def score_word(word: str) -> int:
     score = 0
     for letter in word:
         score += scrabble_point_values[letter]
@@ -31,4 +31,12 @@ def lexicon_file(filename: str)->list:
 
 
 lexicon_file("sowpods.txt")
+
+
+def word_list(passed_list: list)-> list:
+    return passed_list
+
+
+word_list(lexicon_file("sowpods.txt"))
+
 

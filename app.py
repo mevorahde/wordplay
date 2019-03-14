@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 from flask import Flask, jsonify, request
 import wordplay
 
@@ -9,11 +8,14 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return """<h1>Flask is running!</h1>
+    return """<form action="/api/v1/score?l=<word>" method="post">
+    <p>Please enter a word: </p>
+    <input type="text" name="word">
+    <input type="submit">
+    </form>
     <p>Try accessing the <a href="/api/v1/data">dummy data</a> endpoint.</p>
     <p>Score letters <a href="/api/v1/score?l=wombat">'wombat'</a></p>
     """
-
 
 @app.route("/api/v1/data")
 def dummy_data():
@@ -22,11 +24,12 @@ def dummy_data():
     return jsonify(data)
 
 
-@app.route("/api/v1/score")
+@app.route("/api/v1/score", methods=['POST'])
 def score_word():
-    letters = request.args.get('l')
-    score = wordplay.score_word(letters)
-    result = {'letters': sorted(list(letters)),
+    word = request.form['word']
+    lowercase_word = word.lower()
+    score = wordplay.score_word(lowercase_word)
+    result = {'letters': sorted(list(lowercase_word)),
               'score': score}
     return jsonify(result)
 

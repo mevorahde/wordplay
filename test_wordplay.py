@@ -45,9 +45,7 @@ def test_read_words_normal():
 
 def test_read_words_skip_empty_lines_and_comments():
     contents = LEXICON_CONTENTS.replace('\n','\n\n# some comment about a word\n')
-    print("lexicon contents:", contents, sep='\n')  # `pytest -s` to see output
+    print("lexicon contents:", contents, sep='\n')
     file_contents = io.StringIO(contents)
     words = read_words(file_contents)
-    # print(words)
-    # print(EXPECTED_WORDS)
     assert words == EXPECTED_WORDS

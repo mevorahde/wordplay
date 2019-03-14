@@ -26,16 +26,18 @@ def lexicon_file(filename: str)-> list:
 # this method we can test by passing in a `io.StringIO` substitute
 def read_words(file_obj: str) -> list:
     word_list = []
-    # for line in read_lines:
     for line in (file_obj.readlines()):
-        line =  line.strip()
+        line = line.strip()
         if not line.startswith("#") and line:
             word_list.append(line.lower())
-    print(word_list)
+    # print(word_list)
     # print(len(word_list))
     return word_list
     input_file.close()
 
 
 lexicon_file("sowpods.txt")
+
+
+
 

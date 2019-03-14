@@ -25,11 +25,13 @@ def lexicon_file(filename: str)-> list:
 
 # this method we can test by passing in a `io.StringIO` substitute
 def read_words(file_obj: str) -> list:
+    global word_list
     word_list = []
     for line in (file_obj.readlines()):
         line = line.strip()
         if not line.startswith("#") and line:
             word_list.append(line.lower())
+    # print("hi" in word_list)
     # print(word_list)
     # print(len(word_list))
     return word_list

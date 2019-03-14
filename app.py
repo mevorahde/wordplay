@@ -28,9 +28,12 @@ def dummy_data():
 def score_word():
     word = request.form['word']
     lowercase_word = word.lower()
-    score = wordplay.score_word(lowercase_word)
-    result = {'letters': sorted(list(lowercase_word)),
-              'score': score}
+    word_list = wordplay.word_list
+    if lowercase_word in word_list:
+        score = wordplay.score_word(lowercase_word)
+        result = {'letters': sorted(list(lowercase_word)),'score': score}
+    else:
+        result = "You did not enter a valid word."
     return jsonify(result)
 
 
